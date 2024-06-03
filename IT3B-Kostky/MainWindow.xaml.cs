@@ -20,5 +20,10 @@ namespace IT3B_Kostky
   {
    InitializeComponent();
   }
- }
+
+        private void btn_hod_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+    }
 }
