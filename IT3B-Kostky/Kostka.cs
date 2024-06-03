@@ -10,11 +10,11 @@ namespace IT3B_Kostky
 
     {
         private int hodnota;
-        public int Value { get => hodnota; }
+        public int Hodnota { get => hodnota; }
 
         public Kostka()
         {
-
+            Hod();
         }
         public void Hod()
         {
