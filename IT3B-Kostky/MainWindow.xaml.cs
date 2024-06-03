@@ -35,7 +35,7 @@ namespace IT3B_Kostky
 
         private void btn_hod_Click(object sender, RoutedEventArgs e)
         {
-            foreach(var kostka in kostky)
+            foreach (var kostka in kostky)
             {
                 kostka.Hod();
             }
@@ -45,6 +45,7 @@ namespace IT3B_Kostky
         private void ZobrazKostku(Label label, int cislo)
         {
             label.Content = cislo.ToString();
+
         }
         private void ZobrazKostky()
         {
@@ -60,7 +61,7 @@ namespace IT3B_Kostky
             string json = JsonConvert.SerializeObject(kostky);
             File.WriteAllText("data.json", json);
 
-            
+
         }
     }
 }
