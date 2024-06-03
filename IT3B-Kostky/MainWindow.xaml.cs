@@ -8,6 +8,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.IO;
+using Newtonsoft.Json;
 
 namespace IT3B_Kostky
 {
@@ -33,16 +35,32 @@ namespace IT3B_Kostky
 
         private void btn_hod_Click(object sender, RoutedEventArgs e)
         {
-            ZobrazKostkzu(lbl1, kostky[0].Hodnota);
-            ZobrazKostkzu(lbl2, kostky[1].Hodnota);
-            ZobrazKostkzu(lbl3, kostky[2].Hodnota);
-            ZobrazKostkzu(lbl4, kostky[3].Hodnota);
-            ZobrazKostkzu(lbl5, kostky[4].Hodnota);
-            ZobrazKostkzu(lbl6, kostky[5].Hodnota);
+            foreach(var kostka in kostky)
+            {
+                kostka.Hod();
+            }
+            ZobrazKostky();
+            UlozHodnoty();
         }
-        private void ZobrazKostkzu(Label label, int cislo)
+        private void ZobrazKostku(Label label, int cislo)
         {
             label.Content = cislo.ToString();
+        }
+        private void ZobrazKostky()
+        {
+            ZobrazKostku(lbl1, kostky[0].Hodnota);
+            ZobrazKostku(lbl2, kostky[1].Hodnota);
+            ZobrazKostku(lbl3, kostky[2].Hodnota);
+            ZobrazKostku(lbl4, kostky[3].Hodnota);
+            ZobrazKostku(lbl5, kostky[4].Hodnota);
+            ZobrazKostku(lbl6, kostky[5].Hodnota);
+        }
+        private void UlozHodnoty()
+        {
+            string json = JsonConvert.SerializeObject(kostky);
+            File.WriteAllText("data.json", json);
+
+            
         }
     }
 }
